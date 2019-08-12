@@ -1,7 +1,7 @@
-const $sqlQuery = require('./sqlCRUD').comment;
-const _ = require('./query');
+var $sqlQuery = require('./sqlCRUD').comment;
+var _ = require('./query');
 
-const comments = {
+var comments = {
     getCommentsBySkey: function(bookid) {
         return _.query($sqlQuery.queryComments, bookid);
     },

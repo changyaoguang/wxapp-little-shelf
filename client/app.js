@@ -42,9 +42,15 @@ App({
 
     // 登录动作
     doLogin: function (callback = () => {}) {
+        console.log("doLogin")
         let that = this;
+        wx.navigateTo({
+            url: "pages/login/tologin"
+        });
+        return;
         wx.login({
             success: function (loginRes) {
+                console.log('code>>>' ,loginRes.code)
                 if (loginRes.code) {
                     /* 
                      * @desc: 获取用户信息 期望数据如下 
@@ -57,10 +63,10 @@ App({
                      **/
                     wx.getUserInfo({
 
-                        withCredentials: true, // 非必填, 默认为true
+                        //withCredentials: true, // 非必填, 默认为true
 
                         success: function (infoRes) {
-                            console.log(infoRes,'>>>')
+                            console.log(infoRes,'>>> infoRes')
                             // 请求服务端的登录接口
                             wx.request({
                                 url: api.loginUrl,

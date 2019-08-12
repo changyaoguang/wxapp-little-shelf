@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+var crypto = require('crypto');
 
 module.exports = {
     /**
@@ -8,7 +8,7 @@ module.exports = {
         encrypted = new Buffer(encrypted, 'base64');
         key = new Buffer(key, 'base64');
         iv = new Buffer(iv, 'base64');
-        const decipher = crypto.createDecipheriv('aes-128-cbc', key, iv)
+        var decipher = crypto.createDecipheriv('aes-128-cbc', key, iv)
         let decrypted = decipher.update(encrypted, 'base64', 'utf8')
         decrypted += decipher.final('utf8');
         return decrypted

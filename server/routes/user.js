@@ -1,6 +1,6 @@
-const express   = require('express');
-const User      = require('../controllers/users');
-const router    = express.Router();
+var express   = require('express');
+var User      = require('../controllers/users');
+var router    = express.Router();
 
 /**
  * @desc    查询当前用户已购书籍
@@ -8,7 +8,7 @@ const router    = express.Router();
  */
 router.get('/getBoughtBooks', function (req, res, next) {
     
-    const { skey }= req.query;
+    var { skey }= req.query;
     
     if(skey === undefined) {
         res.json({

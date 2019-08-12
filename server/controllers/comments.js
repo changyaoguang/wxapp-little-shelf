@@ -1,5 +1,5 @@
-const Comments = require('../dao/comments');
-const Pusher = require('./push');
+var Comments = require('../dao/comments');
+var Pusher = require('./push');
 
 module.exports = {
     /**

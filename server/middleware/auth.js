@@ -1,8 +1,8 @@
-const http = require('axios');
-const crypto = require('crypto');
-const { appConfig: config } = require('../conf/app');
-const { decryptByAES, encryptSha1 } = require('../util/util');
-const { saveUserInfo } = require('../controllers/users');
+var http = require('axios');
+var crypto = require('crypto');
+var { appConfig: config } = require('../conf/app');
+var { decryptByAES, encryptSha1 } = require('../util/util');
+var { saveUserInfo } = require('../controllers/users');
 /**
  * 登录校验中间件
  */
@@ -17,7 +17,7 @@ function authorizeMiddleware(req, res, next) {
 }
 
 function authMiddleware (req) {
-    const {
+    const  {
         appid,
         secret
     } = config;
@@ -40,8 +40,8 @@ function authMiddleware (req) {
     return getSessionKey(code, appid, secret)
         .then(resData => {
             // 选择加密算法生成自己的登录态标识
-            const { session_key } = resData;
-            const skey = encryptSha1(session_key);
+            var { session_key } = resData;
+            var skey = encryptSha1(session_key);
 
             let decryptedData = JSON.parse(decryptByAES(encryptedData, session_key, iv));
             console.log('-------------decryptedData---------------');
@@ -71,7 +71,7 @@ function authMiddleware (req) {
  */
 function getSessionKey (code, appid, appSecret) {
     
-    const opt = {
+    var opt = {
         method: 'GET',
         url: 'https://api.weixin.qq.com/sns/jscode2session',
         params: {
@@ -83,7 +83,7 @@ function getSessionKey (code, appid, appSecret) {
     };
    
     return http(opt).then(function (response) {
-        const data = response.data;
+        var data = response.data;
         
         if (!data.openid || !data.session_key || data.errcode) {
             return {

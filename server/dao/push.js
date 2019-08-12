@@ -1,7 +1,7 @@
-const $sqlQuery = require('./sqlCRUD').access;
-const _ = require('./query');
+var $sqlQuery = require('./sqlCRUD').access;
+var _ = require('./query');
 
-const push = {
+var push = {
     getPusherToken: function() {
         return _.query($sqlQuery.queryToken);
     }

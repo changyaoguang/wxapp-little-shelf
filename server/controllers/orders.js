@@ -1,6 +1,6 @@
-const Orders = require('../dao/orders');
-const Users = require('../dao/users');
-const Books = require('../dao/books');
+var Orders = require('../dao/orders');
+var Users = require('../dao/users');
+var Books = require('../dao/books');
 
 module.exports = {
     /**
@@ -10,7 +10,7 @@ module.exports = {
         // 获取用户余额
         let uid, balance, price;
 
-        const {
+        var {
             skey,
             bookid
         } = req.body;

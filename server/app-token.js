@@ -1,13 +1,13 @@
-const express = require('express');
-const http = require('axios');
-const config = require('./conf/app').appConfig;
-const app = express();
-const _ = require('./dao/query');
+var express = require('express');
+var http = require('axios');
+var config = require('./conf/app').appConfig;
+var app = express();
+var _ = require('./dao/query');
 
-let nextTime = 0;
-let timer;
-let expires = 0;
-let access_token = '';
+var nextTime = 0;
+var timer;
+var expires = 0;
+var access_token = '';
 
 /**
  * @desc    利用setTimeout定时器来刷新access-token接口调用凭据
@@ -16,7 +16,7 @@ let access_token = '';
  */
 function refreshAccessToken(fn, time) {
   
-    const refreshToken = function() {
+    var refreshToken = function() {
        fn(refreshToken);
     }
   
@@ -35,7 +35,7 @@ function getAccessToken(cb) {
     }
 
     // 获取 access_token
-    const opt = {
+    var opt = {
         url: 'https://api.weixin.qq.com/cgi-bin/token',
         method: 'GET',
         params: {
@@ -50,7 +50,7 @@ function getAccessToken(cb) {
         console.log(response,'调用接口返回数据');
         if(response && response.data && response.data.access_token) {
             // 拿到access_token，存表
-            const resData = response.data;
+            var resData = response.data;
             access_token = resData.access_token;
             expires = resData.expires_in || 0;
 

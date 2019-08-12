@@ -1,6 +1,6 @@
-const express   = require('express');
-const Order     = require('../controllers/orders');
-const router    = express.Router();
+var express   = require('express');
+var Order     = require('../controllers/orders');
+var router    = express.Router();
 
 /**
  * @desc    兑换当前书籍
@@ -8,7 +8,7 @@ const router    = express.Router();
  */
 router.post('/buy', function (req, res, next) {
     
-    const { skey, bookid } = req.body;
+    var { skey, bookid } = req.body;
     
     if (skey === undefined) {
         res.json({

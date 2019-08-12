@@ -1,4 +1,4 @@
-const pool = require('./connect');
+var pool = require('./connect');
 module.exports = {
     /**
      * 通过连接池执行数据CRUD操作

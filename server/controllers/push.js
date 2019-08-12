@@ -1,7 +1,7 @@
-const Push = require('../dao/push');
-const Users = require('../dao/users');
-const http = require('axios');
-const moment = require('moment');
+var Push = require('../dao/push');
+var Users = require('../dao/users');
+var http = require('axios');
+var moment = require('moment');
 
 module.exports = {
     /**
@@ -9,7 +9,7 @@ module.exports = {
      */
     pushMessageToUser: function (req, res, next) {
 
-        const { 
+        var {
             formid,
             skey,
             content
@@ -21,7 +21,7 @@ module.exports = {
             utime        = moment().format('YYYY-MM-DD HH:mm:ss');
 
         // 初始化模板id和跳转页面路由
-        const template_id = '/** your template_id **/',
+        var template_id = '/** your template_id **/',
               page        = '/pages/books/books';
 
         // 获取接口调用凭据token
@@ -47,7 +47,7 @@ module.exports = {
                 throw new Error('信息获取失败!');
             } else {
                 // 调用微信后台提供的发送模板消息接口
-                const paramObj = {
+                var paramObj = {
                     touser: openid,
                     template_id,
                     page,

@@ -1,14 +1,14 @@
-const moment = require('moment');
-const _      = require('./query');
-const $sqlQuery = require('./sqlCRUD').user;
-const config = require('../conf/app').userConfig;
+var moment = require('moment');
+var _      = require('./query');
+var $sqlQuery = require('./sqlCRUD').user;
+var config = require('../conf/app').userConfig;
 
-const user = {
+var user = {
     saveUserInfo: function (userInfo, session_key, skey) {
-        const uid = userInfo.openId,
+        var uid = userInfo.openId,
             create_time = moment().format('YYYY-MM-DD HH:mm:ss'),
             update_time = create_time;
-        const insertObj = {
+        var insertObj = {
             'uid': uid,
             'create_time': create_time,
             'uname': userInfo.nickName,
@@ -20,7 +20,7 @@ const user = {
             'sessionkey': session_key,
             'uavatar': userInfo.avatarUrl
         };
-        const updateObj = {
+        var updateObj = {
             'uname': userInfo.nickName,
             'ugender': userInfo.gender,
             'uaddress': userInfo.province + ',' + userInfo.country,
@@ -41,7 +41,7 @@ const user = {
                 }
             })
             .then(function () {
-                const resUserObj = Object.assign({}, userInfo, { balance: ubalance});
+                var resUserObj = Object.assign({}, userInfo, { balance: ubalance});
                 delete resUserObj.openId && delete resUserObj.watermark;
                 return {
                     userInfo: resUserObj,

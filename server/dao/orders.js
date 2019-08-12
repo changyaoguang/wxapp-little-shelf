@@ -1,9 +1,9 @@
-const $sqlOrderQuery = require('./sqlCRUD').order;
-const $sqlUserQuery = require('./sqlCRUD').user;
+var $sqlOrderQuery = require('./sqlCRUD').order;
+var $sqlUserQuery = require('./sqlCRUD').user;
 
-const _ = require('./query');
+var _ = require('./query');
 
-const orders = {
+var orders = {
     addBookOrder: function (bookid, price, uid, balance) {
         return Promise.all([
             _.query($sqlOrderQuery.buyBook, [uid, price, bookid]),

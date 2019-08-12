@@ -1,11 +1,11 @@
-const Users = require('../dao/users');
+var Users = require('../dao/users');
 
 module.exports = {
     /**
      * 保存用户信息
      */
     saveUserInfo: function(obj) {
-        const userInfo = obj.userInfo || {},
+        var userInfo = obj.userInfo || {},
             session_key = obj.session_key || '',
             skey = obj.skey || '';
         

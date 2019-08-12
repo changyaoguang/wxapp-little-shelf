@@ -1,13 +1,13 @@
-const express   = require('express');
-const Book      = require('../controllers/books');
-const router    = express.Router();
+var express   = require('express');
+var Book      = require('../controllers/books');
+var router    = express.Router();
 
 /** 
  * @desc    获取书籍信息
  * @method  {*请求方法} GET
  */
 router.get('/getBooks', function (req, res, next) {
-    const reqType = req.query.is_all;
+    var reqType = req.query.is_all;
     
     if(reqType === undefined) {
         res.json({
@@ -30,8 +30,8 @@ router.get('/getBooks', function (req, res, next) {
  */
 router.get('/queryBook', function (req, res, next) {
     
-    const bookid = req.query.bookid;
-    const skey = req.query.skey;
+    var bookid = req.query.bookid;
+    var skey = req.query.skey;
     
     if(bookid === undefined || !bookid) {
         res.json({

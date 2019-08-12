@@ -1,15 +1,15 @@
-const express   = require('express');
-const Book      = require('../controllers/books');
-const router    = express.Router();
-const Comment   = require('../controllers/comments');
+var express   = require('express');
+var Book      = require('../controllers/books');
+var router    = express.Router();
+var Comment   = require('../controllers/comments');
 /**
  *  @desc 写评论
  *  @method {*请求方法} POST
  */
 router.post('/write', function (req, res, next) {
-    const skey = req.body.skey;
-    const content = req.body.content;
-    const bookid = parseInt(req.body.bookid);
+    var skey = req.body.skey;
+    var content = req.body.content;
+    var bookid = parseInt(req.body.bookid);
 
     if(skey === undefined) {
         res.json({

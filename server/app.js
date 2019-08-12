@@ -1,19 +1,19 @@
-const createError   = require('http-errors');
-const express       = require('express');
-const cookieParser  = require('cookie-parser');
-const logger        = require('morgan');
+ var createError   = require('http-errors');
+ var express       = require('express');
+ var cookieParser  = require('cookie-parser');
+ var logger        = require('morgan');
 /**
  * 中间件
  */
-const { authorizeMiddleware } = require('./middleware/auth');
+ const { authorizeMiddleware } = require('./middleware/auth');
 
-const loginRouter   = require('./routes/login');
-const bookRouter    = require('./routes/book');
-const userRooter    = require('./routes/user');
-const commentRouter = require('./routes/comment');
-const orderRouter   = require('./routes/order');
+ var loginRouter   = require('./routes/login');
+ var bookRouter    = require('./routes/book');
+ var userRooter    = require('./routes/user');
+ var commentRouter = require('./routes/comment');
+ var orderRouter   = require('./routes/order');
 
-const app = express();
+ var app = express();
 
 // view engine setup
 app.use(express.json());

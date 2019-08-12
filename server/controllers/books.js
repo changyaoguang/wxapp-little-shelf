@@ -1,6 +1,6 @@
-const Books    = require('../dao/books');
-const Comments = require('../dao/comments');
-const moment   = require('moment');
+var Books    = require('../dao/books');
+var Comments = require('../dao/comments');
+var moment   = require('moment');
 
 module.exports = {
     /**
@@ -31,7 +31,7 @@ module.exports = {
      * 根据bookid获取当前书籍信息
      */
     getBookById: function(req, res, next) {
-        const bookid = req.query.bookid;
+        var bookid = req.query.bookid;
         if(!bookid) {
             res.json({
                 result: -1,
@@ -62,7 +62,7 @@ module.exports = {
      * 根据用户skey标识，查询用户是否购买书籍并返回评论列表
      */
     queryBookBySkey: function(req, res, next) {
-        const responseData = {};
+        var responseData = {};
         // 查询用户是否购买当前书籍
         Books.queryBookBySkey(req.query.bookid, req.query.skey).then(function(resData) {
 

@@ -1,0 +1,5 @@
+<view class="image-div">
+    <image src='../../utils/logo.jpg' ></image>
+    <button class='btn_yzm' type="primary" open-type="getUserInfo" bindgetuserinfo="doLoginNew" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
+            disabled="{{disabled}}" bindtap="primary"> 授权登录 </button>
+</view>

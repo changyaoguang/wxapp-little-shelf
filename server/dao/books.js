@@ -1,7 +1,7 @@
-const $sqlQuery = require('./sqlCRUD').book;
-const _ = require('./query');
+var $sqlQuery = require('./sqlCRUD').book;
+var _ = require('./query');
 
-const books = {
+var books = {
     getBookInfo: function (isAll, bookid) {
         if (isAll) {
             return _.query($sqlQuery.queryAll, [])

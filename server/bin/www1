@@ -5,37 +5,29 @@
  */
 
 var app = require('../app');
-var appToken = require('../app-token');
-var debug = require('debug')('server:server');
+var debug = require('debug')('nodejs2:server');
 var http = require('http');
 
 /**
- * 业务服务端口,默认为3003
+ * Get port from environment and store in Express.
  */
-var port = normalizePort(process.env.PORT || '3003');
-/**
- * 中控服务端口,默认为3309
- */
-var tokenPort = normalizePort(process.env.TOKEN_PORT || '3309');
+
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-appToken.set('port', tokenPort);
 
 /**
- * 创建 HTTP & access_token 服务器
+ * Create HTTP server.
  */
+
 var server = http.createServer(app);
-var tokenServer = http.createServer(appToken);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
+
 server.listen(port);
 server.on('error', onError);
-server.on('listening', function() { onListening(server) });
-
-tokenServer.listen(tokenPort);
-tokenServer.on('error', onError);
-tokenServer.on('listening', function() { onListening(tokenServer) });
+server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
@@ -89,10 +81,10 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening(serverObj) {
-  var addr = serverObj.address();
+function onListening() {
+  var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  console.log('listening on '+bind);
+  debug('Listening on ' + bind);
 }
